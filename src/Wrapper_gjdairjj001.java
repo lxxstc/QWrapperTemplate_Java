@@ -28,8 +28,28 @@ import java.util.Map;
 import java.util.regex.*;
 
 public class Wrapper_gjdairjj001 implements QunarCrawler{
-
-
+	private static final NameValuePair WDS_CORPORATE_SALES = new NameValuePair("WDS_CORPORATE_SALES","FALSE");
+	private static final NameValuePair SO_SITE_ISSUE_TKT_PER_PAX = new NameValuePair("SO_SITE_ISSUE_TKT_PER_PAX","TRUE");
+	private static final NameValuePair FORCE_OVERRIDE = new NameValuePair("FORCE_OVERRIDE","TRUE");
+	private static final NameValuePair WDS_DOMAIN_NAME = new NameValuePair("WDS_DOMAIN_NAME","tam.com.br");
+	private static final NameValuePair WDS_MARKET = new NameValuePair("WDS_MARKET","OC");
+	private static final NameValuePair WDS_DISABLE_ATC_CHANGE_ITIN = new NameValuePair("WDS_DISABLE_ATC_CHANGE_ITIN","TRUE");
+	private static final NameValuePair WDS_DISABLE_DEVICE_FINGERPRINT_MERCHANT_ID_PER_OID = new NameValuePair("WDS_DISABLE_DEVICE_FINGERPRINT_MERCHANT_ID_PER_OID","FALSE");
+	private static final NameValuePair WDS_ONLINE_OPINION_EXIT_PERCENT = new NameValuePair("WDS_ONLINE_OPINION_EXIT_PERCENT","10");
+	private static final NameValuePair WDS_ACI_ENABLED_MARKETS = new NameValuePair("WDS_ACI_ENABLED_MARKETS","BR:OP:CO");
+	private static final NameValuePair WDS_MARKET_WITH_INSURANCE = new NameValuePair("WDS_MARKET_WITH_INSURANCE","BR:OP:CO:PE");
+	private static final NameValuePair WDS_DISABLE_ATC_REFUND = new NameValuePair("WDS_DISABLE_ATC_REFUND","TRUE");
+	private static final NameValuePair SITE = new NameValuePair("SITE","JJBKJJBK");
+	private static final NameValuePair LANGUAGE = new NameValuePair("LANGUAGE","GB");
+	private static final NameValuePair FROM_PAGE = new NameValuePair("FROM_PAGE","HOMESEARCH");
+	private static final NameValuePair TRIP_TYPE = new NameValuePair("TRIP_TYPE","O");
+	private static final NameValuePair ADULTS = new NameValuePair("adults","1");
+	private static final NameValuePair CHILDREN = new NameValuePair("children","0");
+	private static final NameValuePair INFANTS = new NameValuePair("infants","0");
+	private static final NameValuePair CORPORATE_CODE_INPUT = new NameValuePair("CORPORATE_CODE_INPUT","");
+	private static final NameValuePair SEARCH_COOKIE = new NameValuePair("SEARCH_COOKIE","");     	
+	
+	
 	public BookingResult getBookingInfo(FlightSearchParam arg0) {
 
 		String bookingUrlPre = "http://book.tam.com.br/TAM/dyn/air/booking/upslDispatcher";
@@ -111,31 +131,30 @@ public class Wrapper_gjdairjj001 implements QunarCrawler{
 	 		
 	 	
 	 	NameValuePair[] names = {
-	    		new NameValuePair("WDS_CORPORATE_SALES","FALSE"),
-	    		new NameValuePair("SO_SITE_ISSUE_TKT_PER_PAX","TRUE"),
-	    		new NameValuePair("FORCE_OVERRIDE","TRUE"),
-	    		new NameValuePair("WDS_DOMAIN_NAME","tam.com.br"),
-	    		new NameValuePair("WDS_MARKET","OC"),
-	    		new NameValuePair("WDS_DISABLE_ATC_CHANGE_ITIN","TRUE"),
-	     		new NameValuePair("WDS_DISABLE_DEVICE_FINGERPRINT_MERCHANT_ID_PER_OID","FALSE"),
-	    		new NameValuePair("WDS_ONLINE_OPINION_EXIT_PERCENT","10"),
-	    		new NameValuePair("WDS_ACI_ENABLED_MARKETS","BR:OP:CO"),
-	    		new NameValuePair("WDS_MARKET_WITH_INSURANCE","BR:OP:CO:PE"),
-	    		new NameValuePair("WDS_DISABLE_ATC_REFUND","TRUE"),
-	    		new NameValuePair("SITE","JJBKJJBK"),
-	    		new NameValuePair("LANGUAGE","GB"),
-	    		new NameValuePair("WDS_MARKET","OC"),
-	    		new NameValuePair("FROM_PAGE","HOMESEARCH"),
+	    		WDS_CORPORATE_SALES,
+	    		SO_SITE_ISSUE_TKT_PER_PAX,
+	    		FORCE_OVERRIDE,
+	    		WDS_DOMAIN_NAME,
+	    		WDS_MARKET,
+	    		WDS_DISABLE_ATC_CHANGE_ITIN,
+	     		WDS_DISABLE_DEVICE_FINGERPRINT_MERCHANT_ID_PER_OID,
+	    		WDS_ONLINE_OPINION_EXIT_PERCENT,
+	    		WDS_ACI_ENABLED_MARKETS,
+	    		WDS_MARKET_WITH_INSURANCE,
+	    		WDS_DISABLE_ATC_REFUND,
+	    		SITE,
+	    		LANGUAGE,
+	    		FROM_PAGE,
 	    		new NameValuePair("B_DATE_1",data), 
 	    		new NameValuePair("B_LOCATION_1",arg0.getDep()), 
 	    		new NameValuePair("E_LOCATION_1",arg0.getArr()),
-	    		new NameValuePair("TRIP_TYPE","O"),
-	    		new NameValuePair("adults","1"),
-	    		new NameValuePair("children","0"),
-	    		new NameValuePair("infants","0"),
+	    		TRIP_TYPE,
+	    		ADULTS,
+	    		CHILDREN,
+	    		INFANTS,
 	    		new NameValuePair("COMMERCIAL_FARE_FAMILY_1",COMMERCIAL_FARE_FAMILY),
-	    		new NameValuePair("CORPORATE_CODE_INPUT",""),
-	    		new NameValuePair("SEARCH_COOKIE",""),     	
+	    		CORPORATE_CODE_INPUT,
+	    		SEARCH_COOKIE,     	
 	    };
 	    post.setRequestBody(names);
 	 	post.setRequestHeader("Referer", "http://book.tam.com.br/TAM/dyn/air/homeSearch");
@@ -233,6 +252,7 @@ public class Wrapper_gjdairjj001 implements QunarCrawler{
                 {
 
                 	int m=i*8;
+                	System.out.println("Zhifei: " + i + " info: " + zhifei[m] + " " + zhifei[m+1] + " " + zhifei[m+2] + " " + zhifei[m+3] + " " + zhifei[m+4] + " " + zhifei[m+5] + " " + zhifei[m+6] + " " + zhifei[m+7]);
                 	if(zhifei[m+5].equals("OUT"))
                 	{
                 		if(zhifei[m+6].equals("OUT"))
@@ -380,12 +400,16 @@ public class Wrapper_gjdairjj001 implements QunarCrawler{
 						
 						//fightno
 						List<String> flightno = Lists.newArrayList();
+						System.out.println("tmp : " + tmp);
 						String no = StringUtils.substringBetween(tmp, "data-flight-number=\"", "\"");
+//						String planeType = StringUtils.substringBetween(tmp,"data-aircraft=\"", "\"");
 						String dep = StringUtils.substringBetween(tmp,"data-departureairportcode=\"", "\"");
 						String arr = StringUtils.substringBetween(tmp,"data-arrivalairportcode=\"", "\"");
 						String depTimeStr = StringUtils.substringBetween(tmp,"data-departuredate=\"", "\"");
 						String arrTimeStr = StringUtils.substringBetween(tmp,"data-arrivaldate=\"", "\"");
-
+						
+						System.out.println("deptime : " + depTimeStr);
+						System.out.println("arrtime : " + arrTimeStr);
 						//获取价格
 						String pricebufs[] = getValues(tmp,"<td class=\"f1-brcolor ","</td>");
 						String price = "";
@@ -397,6 +421,7 @@ public class Wrapper_gjdairjj001 implements QunarCrawler{
 						
 						for(int n=0;n<pricebufs.length;n++)
 						{
+							System.out.println("pricebuf : " + pricebufs[n]);
 							price = StringUtils.substringBetween(pricebufs[n],"data-cell-price-adt=\"", "\"");
 							if(StringUtils.isNotEmpty(price))
 							{
@@ -416,6 +441,7 @@ public class Wrapper_gjdairjj001 implements QunarCrawler{
 								}
 							}
 						}
+						System.out.println("price  : " + oldprice);
 						if(oldprice.equals(0f))
 						{
 							continue;
@@ -432,6 +458,7 @@ public class Wrapper_gjdairjj001 implements QunarCrawler{
 						seg.setDepairport(dep);
 						seg.setDepDate(Dformat.format(d));
 						seg.setDeptime(Tformat.format(d));
+						System.out.println("Format : " + Dformat.format(d) +" " +Tformat.format(d) );
 						seg.setFlightno(no);
 						
 						d = new Date(arrTimeStr);
@@ -446,6 +473,8 @@ public class Wrapper_gjdairjj001 implements QunarCrawler{
 						{
 
 							no = StringUtils.substringBetween(fsegBuf[n], "data-flight-number=\"", "\"");
+							System.out.println("no: " + no);
+//							String planeType = StringUtils.substringBetween(tmp,"data-aircraft=\"", "\"");
 							dep = StringUtils.substringBetween(fsegBuf[n],"data-departureairportcode=\"", "\"");
 							arr = StringUtils.substringBetween(fsegBuf[n],"data-arrivalairportcode=\"", "\"");
 							depTimeStr = StringUtils.substringBetween(fsegBuf[n],"data-departuredate=\"", "\"");
