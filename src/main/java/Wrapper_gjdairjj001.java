@@ -1,31 +1,30 @@
-import com.google.common.collect.Lists;
-import com.qunar.qfwrapper.bean.booking.BookingResult;
-import com.qunar.qfwrapper.bean.booking.BookingInfo;
-import com.qunar.qfwrapper.bean.search.FlightSearchParam;
-import com.qunar.qfwrapper.bean.search.ProcessResultInfo;
-import com.qunar.qfwrapper.bean.search.OneWayFlightInfo;
-import com.qunar.qfwrapper.bean.search.FlightDetail;
-import com.qunar.qfwrapper.bean.search.FlightSegement;
-import com.qunar.qfwrapper.interfaces.QunarCrawler;
-import com.qunar.qfwrapper.util.QFPostMethod;
-import com.qunar.qfwrapper.util.QFHttpClient;
-import com.qunar.qfwrapper.constants.Constants;
-import com.travelco.rdf.infocenter.InfoCenter;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.SimpleTimeZone;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.commons.httpclient.NameValuePair;
 import org.apache.commons.httpclient.cookie.CookiePolicy;
 import org.apache.commons.lang.StringUtils;
 
-import java.io.File;
-import java.text.SimpleDateFormat;
-import java.text.DateFormat;
-import java.util.ArrayList;
-import java.util.SimpleTimeZone;
-import java.util.Date;
-import java.util.List;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.regex.*;
+import com.google.common.collect.Lists;
+import com.qunar.qfwrapper.bean.booking.BookingInfo;
+import com.qunar.qfwrapper.bean.booking.BookingResult;
+import com.qunar.qfwrapper.bean.search.FlightDetail;
+import com.qunar.qfwrapper.bean.search.FlightSearchParam;
+import com.qunar.qfwrapper.bean.search.FlightSegement;
+import com.qunar.qfwrapper.bean.search.OneWayFlightInfo;
+import com.qunar.qfwrapper.bean.search.ProcessResultInfo;
+import com.qunar.qfwrapper.constants.Constants;
+import com.qunar.qfwrapper.interfaces.QunarCrawler;
+import com.qunar.qfwrapper.util.QFHttpClient;
+import com.qunar.qfwrapper.util.QFPostMethod;
+import com.travelco.rdf.infocenter.InfoCenter;
 
 public class Wrapper_gjdairjj001 implements QunarCrawler{
 
@@ -254,7 +253,7 @@ public class Wrapper_gjdairjj001 implements QunarCrawler{
                 				flightDetail.setDepdate(date);
                 				flightDetail.setFlightno(flightNoList);
                 				flightDetail.setMonetaryunit(moneyUnit);
-                				flightDetail.setPrice(Math.round(Float.parseFloat(zhifei[m+7])));
+                				flightDetail.setPrice(Float.parseFloat(zhifei[m+7]));
                 				flightDetail.setTax(0);
                 				
                 				seg.setDeptime(zhifei[m]);
@@ -284,7 +283,7 @@ public class Wrapper_gjdairjj001 implements QunarCrawler{
             				flightDetail.setDepdate(date);
             				flightDetail.setFlightno(flightNoList);
             				flightDetail.setMonetaryunit(moneyUnit);
-            				flightDetail.setPrice(Math.round(Float.parseFloat(zhifei[m+6])));
+            				flightDetail.setPrice(Float.parseFloat(zhifei[m+6]));
             				flightDetail.setTax(0);
             				
             				seg.setDeptime(zhifei[m]);
@@ -314,7 +313,7 @@ public class Wrapper_gjdairjj001 implements QunarCrawler{
         				flightDetail.setDepdate(date);
         				flightDetail.setFlightno(flightNoList);
         				flightDetail.setMonetaryunit(moneyUnit);
-        				flightDetail.setPrice(Math.round(Float.parseFloat(zhifei[m+5])));
+        				flightDetail.setPrice(Float.parseFloat(zhifei[m+5]));
         				flightDetail.setTax(0);
         				
         				seg.setDeptime(zhifei[m]);
